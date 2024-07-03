@@ -43,7 +43,21 @@ class User extends Sequelize.Model {
     );
   }
 
-  static associate(db) {} // 다른 모델과의 관계를 적을 수 있음
+  static associate(db) {
+    db.User.hasMany(db.post); // User 모델과 Post 모델은 1:N 관계
+    db.User.belongsToMany(db.User, {
+      // User 모델과 User 모델은 N:M 관계
+      foreignKey: "followingId", // followingId 컬럼이 생성됨
+      as: "Followers", // 팔로워 목록
+      through: "Follow", // Follow 테이블을 통해 연결
+    });
+
+    db.User.belongsToMany(db.User, {
+      foreignKey: "followerId",
+      as: "Followings", // 팔로잉 목록
+      through: "Follow", // Follow 테이블을 통해 연결
+    });
+  } // 다른 모델과의 관계를 적을 수 있음
 }
 
 module.exports = User;
