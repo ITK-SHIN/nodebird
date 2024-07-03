@@ -21,6 +21,8 @@ if (config.use_env_variable) {
   );
 }
 
+db.sequelize = sequelize;
+
 const basename = path.basename(__filename); // 현재 파일명을 가져옴
 fs.readdirSync(__dirname) // models 폴더의 파일들을 읽어옴  // __dirname : 현재 폴더
   .filter((file) => {

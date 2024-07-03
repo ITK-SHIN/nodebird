@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 
 dotenv.config(); // .env 파일을 읽어서 process.env 로 만듬
 const pageRouter = require("./routes/page"); // 페이지 라우팅을 처리하는 별도의 라우터 모듈을 불러옴
+const { sequelize } = require("./models");
 
 const app = express();
 app.set("port", process.env.PORT || 8001);
@@ -17,6 +18,15 @@ nunjucks.configure("views", {
   express: app,
   watch: true,
 });
+
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log("데이터베이스 연결 성공");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 app.use(morgan("dev")); // 로그를 출력해주는 미들웨어
 app.use(express.static(path.join(__dirname, "public"))); // 정적 파일 제공

@@ -44,7 +44,7 @@ class User extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.User.hasMany(db.post); // User 모델과 Post 모델은 1:N 관계
+    db.User.hasMany(db.Post); // User 모델과 Post 모델은 1:N 관계
     db.User.belongsToMany(db.User, {
       // User 모델과 User 모델은 N:M 관계
       foreignKey: "followingId", // followingId 컬럼이 생성됨
