@@ -7,7 +7,7 @@ const nunjucks = require("nunjucks");
 const dotenv = require("dotenv");
 
 dotenv.config(); // .env 파일을 읽어서 process.env 로 만듬
-const pageRouter = require("./routes/page"); // 라우터 가져오기
+const pageRouter = require("./routes/page"); // 페이지 라우팅을 처리하는 별도의 라우터 모듈을 불러옴
 
 const app = express();
 app.set("port", process.env.PORT || 8001);

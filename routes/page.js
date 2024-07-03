@@ -5,8 +5,9 @@ const {
   renderMain,
 } = require("../controllers/page");
 
-const router = express.Router();
+const router = express.Router(); // 라우터 객체 생성
 
+// res.locals 에 담아두면 공통으로 사용할 수 있음
 router.use((req, res, next) => {
   res.locals.user = null;
   res.locals.followerCount = 0;
