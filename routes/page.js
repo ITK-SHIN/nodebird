@@ -16,7 +16,7 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/profile", renderProfile);
+router.get("/profile", renderProfile); // GET /profile 요청이 들어오면 renderProfile 함수 실행
 router.get("/join", renderJoin);
 router.get("/", renderMain);
 

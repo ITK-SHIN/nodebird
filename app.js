@@ -19,6 +19,7 @@ nunjucks.configure("views", {
   watch: true,
 });
 
+// sequelize.sync() 메서드를 사용하면 서버 실행 시 자동으로 데이터베이스에 테이블을 생성
 sequelize
   .sync({ force: false })
   .then(() => {

@@ -21,7 +21,7 @@ if (config.use_env_variable) {
   );
 }
 
-db.sequelize = sequelize;
+db.sequelize = sequelize; // db 객체에 시퀄라이즈 객체를 넣음
 
 const basename = path.basename(__filename); // 현재 파일명을 가져옴
 fs.readdirSync(__dirname) // models 폴더의 파일들을 읽어옴  // __dirname : 현재 폴더
@@ -38,6 +38,11 @@ fs.readdirSync(__dirname) // models 폴더의 파일들을 읽어옴  // __dirna
   });
 
 Object.keys(db).forEach((modelName) => {
+  //console.log(db, modelName);
+  console.log(modelName);
+  console.log(
+    "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ"
+  );
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
